@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import {store} from './store'
+import userStatus from './store/module/user-status'
 //引入axios
 import axios from 'axios'
 //引入vue-resource
@@ -27,6 +28,7 @@ axios.defaults.baseURL="http://localhost:3000/"
  * 完成后可以使用this.http.get(),等等发起请求
 */
 
+Vue.prototype.status=status
 Vue.config.productionTip = false
 
 //全局路由守卫
@@ -34,7 +36,11 @@ Vue.config.productionTip = false
 //全局前置守卫，进入一个路由触发
 router.beforeEach((to,from,next)=>{
   //1.判断是否处于登录状态，store.getter.isLogin = false ?
-  if(store.state.isLogin){
+  //非模块化得登录状态
+  // console.log(store.state.isLogin);
+  // 模块化后的登录状态
+  // console.log(userStatus.state.isLogin)
+  if(userStatus.state.isLogin){
     next()
   }else{
     //2.如果不是登录状态，那么只有login和register页面和Home可以进入

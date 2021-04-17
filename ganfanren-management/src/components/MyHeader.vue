@@ -51,6 +51,7 @@
 </template>
 <script>
 import axios from 'axios'
+import userStatus from '../store/module/user-status'
 export default {
   
   data() {
@@ -71,8 +72,22 @@ export default {
   methods:{
     setLogin(){
       // console.log("aaa");
+      //非模块化
+      // axios
+      // .get(`/users/${this.$store.state.userId}`)
+      // .then(res=>{
+      //   console.log(res.data.id);
+      //   axios
+      //   .put(`/users/${res.data.id}`,{
+      //       "userEmail": res.data.userEmail,
+      //       "userPassword": res.data.userPassword,
+      //       "isLogin": false,
+      //   })
+      // })
+      //模块化
+      //  console.log(userStatus.state.userId);
       axios
-      .get(`/users/${this.$store.state.userId}`)
+      .get(`/users/${userStatus.state.userId}`)
       .then(res=>{
         console.log(res.data.id);
         axios
