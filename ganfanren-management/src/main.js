@@ -34,25 +34,25 @@ Vue.config.productionTip = false
 //全局路由守卫
 //to到哪里去，from从哪里来，next是否继续
 //全局前置守卫，进入一个路由触发
-router.beforeEach((to,from,next)=>{
-  //1.判断是否处于登录状态，store.getter.isLogin = false ?
-  //非模块化得登录状态
-  // console.log(store.state.isLogin);
-  // 模块化后的登录状态
-  // console.log(userStatus.state.isLogin)
-  if(userStatus.state.isLogin){
-    next()
-  }else{
-    //2.如果不是登录状态，那么只有login和register页面和Home可以进入
-    if(to.path=="/login" || to.path=="/register" || to.path=="/"){
-      next()
-    }else{
-      alert("请先登录")
-      next("/login")
-    }
-  }
+// router.beforeEach((to,from,next)=>{
+//   //1.判断是否处于登录状态，store.getter.isLogin = false ?
+//   //非模块化得登录状态
+//   // console.log(store.state.isLogin);
+//   // 模块化后的登录状态
+//   // console.log(userStatus.state.isLogin)
+//   if(userStatus.state.isLogin){
+//     next()
+//   }else{
+//     //2.如果不是登录状态，那么只有login和register页面和Home可以进入
+//     if(to.path=="/login" || to.path=="/register" || to.path=="/"){
+//       next()
+//     }else{
+//       alert("请先登录")
+//       next("/login")
+//     }
+//   }
   
-})
+// })
 
 //全局后置守卫
 //从一个路由离开时触发

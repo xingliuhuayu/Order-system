@@ -33,6 +33,7 @@
         <li><router-link :to="{name:'Home'}" class="nav-link">主页</router-link></li>
         <li><router-link :to="{name:'Menu'}" class="nav-link">菜单</router-link></li>
         <li><router-link :to="{name:'Admin'}" class="nav-link">管理</router-link></li>
+        <li><router-link :to="{name:'Order'}" class="nav-link">订单</router-link></li>
         <li><router-link :to="{name:'About'}" class="nav-link">关于我们</router-link></li>
       </ul>
 

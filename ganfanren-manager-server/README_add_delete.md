@@ -16,7 +16,7 @@
 # 删除 delete
 * 传入： http://localhost:3000/users/5
 
-# 更新 put
+# 更新 patch
 * 传入： http://localhost:3000/users/3
 * 变更名字：{
     name:"leader"

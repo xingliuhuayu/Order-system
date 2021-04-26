@@ -2,7 +2,7 @@
     <div>
         <Alert :message="alert" v-if="alert"></Alert>
          <form class="form">
-            <h3 class="text-muted my-5">添加新菜</h3>
+            <h3 class="text-muted my-3">添加新菜</h3>
 
             <!-- 菜名 -->
             <div class="form-group row">

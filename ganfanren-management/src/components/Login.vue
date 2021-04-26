@@ -41,7 +41,7 @@ export default {
              * 3.否则用户不存在，提醒用户是否邮箱输入错误
              * 4.如果密码错误则提醒用户密码错误
             */
-           let that=this
+            let that=this
             axios
             .get(`/users?userEmail=${this.email}`)
             .then(res=>{

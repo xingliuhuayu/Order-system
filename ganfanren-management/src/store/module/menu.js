@@ -1,12 +1,18 @@
 const state ={
     //菜单数组
     menuList:[],
+    //要更新的菜名信息
+    item:{}
 }
 
 const getters={
-    //获取属性的状态
+    //获取属性的状态,菜单一变都变
     getMenuList:state=>{
         return state.menuList
+    },
+    //获取item的改变
+    getItem:state=>{
+        return state.item
     }
 }
 
@@ -27,6 +33,10 @@ const mutations={
     addNewGood(state,data){
         state.menuList.push(data)
     },
+    //修改要更新的菜品信息
+    setItem(state,data){
+        state.item=data
+    }
 }
 
 const actions={

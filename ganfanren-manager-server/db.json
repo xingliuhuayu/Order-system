@@ -78,19 +78,11 @@
     {
       "userEmail": "aaa@qq.com",
       "userPassword": "123456",
-      "isLogin": false,
+      "isLogin": true,
       "id": 16
     }
   ],
   "menus": [
-    {
-      "id": 3,
-      "good_name": "剁辣椒蒸芋头",
-      "good_info": "紫菜，鸡蛋",
-      "good_imgSrc": "",
-      "good_newPrice": 2,
-      "good_oldPrice": 4
-    },
     {
       "id": 4,
       "good_name": "茄子豆角",
@@ -121,6 +113,13 @@
       "good_oldPrice": "7",
       "good_info": "微辣，白菜",
       "id": 9
+    },
+    {
+      "good_name": "干豆角蒸肉",
+      "good_newPrice": "13.4",
+      "good_oldPrice": "16.4",
+      "good_info": "豆角，五花肉",
+      "id": 10
     }
   ],
   "orders": [

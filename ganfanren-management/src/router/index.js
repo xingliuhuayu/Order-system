@@ -8,6 +8,9 @@ import Admin from '@/components/Admin'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import About from '@/components/about/About'
+import Order from '@/components/Order'
+
+ 
 
 //about二级路由
 import History from '@/components/about/History'
@@ -16,7 +19,6 @@ import OrderingGuide from '@/components/about/OrderingGuide'
 import Delivery from '@/components/about/Delivery'
 
 //contact三级路由
-
 import Phone from '@/components/about/contact/Phone'
 import PersonName from '@/components/about/contact/PersonName'
 
@@ -58,6 +60,11 @@ export default new Router({
       path: '/menu',
       name: 'Menu',
       component: Menu
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order
     },
     {
       path: '/admin',
