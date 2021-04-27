@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import menu from './module/menu'
 import userStatus from './module/user-status'
+import order from './module/order'
 
 Vue.use(Vuex)
 
@@ -10,7 +11,8 @@ export const store = new Vuex.Store({
     //模块化
     modules:{
         menu,
-        userStatus
+        userStatus,
+        order
     }
 
 

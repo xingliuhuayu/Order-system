@@ -1,0 +1,37 @@
+<view class="menuContainer">
+  <!-- 搜索框 -->
+  <SearchInput></SearchInput>
+
+  <!-- siper 镇店菜 活动推荐-->
+  <swiper autoplay circular indicator-dots indicator-active-color="#d81e06">
+    <swiper-item wx:for="{{swiperList}}" wx:key="unique">
+      <navigator url="" open-type="navigate">
+        <image class="" src="{{item.imgSrc}}" mode="widthFix"></image>
+      </navigator>
+    </swiper-item>
+  </swiper>
+
+  <view class="menu_list" wx:for="{{menuList}}" wx:key="*this">
+    <!-- 左侧图片 -->
+    <image  mode="widthFix"
+    src="http://m.qpic.cn/psc?/V50MDf9e3T15H42YFol43JjKfU1Xe4Iz/ruAMsa53pVQWN7FLK88i5nP4MFOFeDWb8aZU8MM*imo5.v7wiwnreO.YlDbSavi425xJbaHORsDYXGUsMVu8aAhHMZREXXoUlphtthRfUPg!/mnull&bo=ewIFAQAAAAABB10!&rf=photolist&t=5"></image>
+    <!-- 右侧主要内容区 -->
+    <view class="menu_right">
+      <view class="good_name">{{item.good_name}}</view>
+      <view class="good_info">原料:{{item.good_info}}</view>
+      <!-- 折扣率 -->
+      <view class="discount">{{item.discount}}折</view>
+      <view class="price">
+        <!-- 新价格 -->
+        <text class="new_price">￥{{item.good_newPrice}}</text>
+        <!-- 老价格 -->
+        <text class="old_price">￥{{item.good_oldPrice}}</text>
+        <!-- 加入购物车 -->
+        <button>+</button>
+      </view>
+
+    </view>
+  </view>
+   
+</view>
+

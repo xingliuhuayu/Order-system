@@ -3,6 +3,7 @@
 
         <!-- 菜单 -->
         <div class="col-sm-12 col-md-8">
+            <Alert :message="alert" v-if="alert"></Alert>
             <table class="table">
                 <thead class="thead-default">
                     <tr>
@@ -73,7 +74,7 @@
                     </tbody>
                 </table>
                 <p class="total_price">总价：{{totalPrice + "RMB"}}</p>
-                <button class="btn btn-success btn-block">提交</button>
+                <button class="btn btn-success btn-block" @click="submitOrder">提交</button>
             </div>
 
             <div v-else>
@@ -92,7 +93,8 @@ export default {
             //购物车数组
             cart:[],
             //菜单数组
-            // menuList:[]
+            // menuList:[],
+            alert:""
         }
     },
     computed:{
@@ -174,6 +176,27 @@ export default {
         removeGoodToCart(item){
             this.cart.splice(this.cart.indexOf(item,1))
         },
+        //提交订单到数据库
+        submitOrder(){
+            //处理时间
+            let localTime=new Date().toLocaleString()
+            const formDate={
+                "time":localTime,
+                "total_price":this.totalPrice,
+                "order_detail":this.cart,
+                "order_status":false
+            }
+            axios
+            .post(`/orders`,formDate)
+            .then(res=>{
+                this.alert="订单提交成功"
+                //提交成功后清空数组
+                this.cart=[]
+            })
+
+           
+            
+        }
     },
     created(){
         //在一开始就获取到菜单的数据

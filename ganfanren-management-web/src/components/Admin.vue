@@ -1,10 +1,10 @@
 <template>
     <div class="row">
         <div class="col-sm-12 col-md-8">
-            <!-- 条件渲染，status为一显示添加新菜页面，为而显示更新新菜页面 -->
+            <!-- 条件渲染，status为1显示添加新菜页面，为2显示更新新菜页面 -->
             <!-- 添加新菜 -->
+            <update-good v-if="status===1"></update-good>
             <add-new-good v-if="status===2"></add-new-good>
-            <update-good v-if="status===1" ></update-good>
         </div>
 
         <div class="col-sm-12 col-md-4">
