@@ -2,7 +2,7 @@
 
 page{
   background: #f6f6f6;
-  width: 750rpx;height: 100%;
+  width: 100vw;height: 100vh;
   --themeColor:#1296db;
   --themeColorRed:#d81e06
   

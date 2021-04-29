@@ -101,23 +101,23 @@
     },
     {
       "good_name": "海带排骨汤",
-      "good_newPrice": "7.8",
-      "good_oldPrice": "3.5",
+      "good_newPrice": 7.8,
+      "good_oldPrice": 13.5,
       "good_info": "海带，排骨高汤",
       "good_imgSrc": "",
       "id": 8
     },
     {
       "good_name": "剁辣椒芽白",
-      "good_newPrice": "8.8",
-      "good_oldPrice": "7",
+      "good_newPrice": 8.8,
+      "good_oldPrice": "9",
       "good_info": "微辣，白菜",
       "id": 9
     },
     {
       "good_name": "干豆角蒸肉",
-      "good_newPrice": "13.4",
-      "good_oldPrice": "16.4",
+      "good_newPrice": 13.4,
+      "good_oldPrice": 16.4,
       "good_info": "豆角，五花肉",
       "id": 10
     }
