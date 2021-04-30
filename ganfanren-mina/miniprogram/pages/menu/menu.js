@@ -115,12 +115,12 @@ Page({
     }
     //把购物车添加回缓存中
     wx.setStorageSync('cartArr', cartArr);
-    wx.showToast({
-      title: '加入成功',
-      icon: 'success',
-      duration: 1500,
-      mask: true,//防止触摸穿透
-    });
+    // wx.showToast({
+    //   title: '加入成功',
+    //   icon: 'success',
+    //   duration: 100,
+    //   mask: true,//防止触摸穿透
+    // });
     this.setData({
       cartList:cartArr
     })
@@ -128,8 +128,15 @@ Page({
     this.totalCartInfo()
 
   },
+  
+  initCartDetail(){
+    let cartArr=wx.getStorageSync("cartArr")  || [];
+    this.setData({
+      cartList:cartArr,
+    })
+  },
 
-  //购物车的初始化
+  //计算商品数量与价格
   totalCartInfo(){
     //计算商品数量与总价格
     let cartArr=wx.getStorageSync("cartArr")  || [];
@@ -186,16 +193,78 @@ Page({
         order_detail:cartArr
       }
     }).then(res=>{
-      //成功后将购物车清空
-      //并且清空缓存
-      this.setData({
-        cartList:[],
-        ["cartObj.totalPrice"]:null,
-        ["cartObj.totalQuantity"]:null
-      })
-      wx.setStorageSync('cartArr', []);
+      /**
+       * 并且用户点击确定后
+       * 成功后将购物车清空
+       * 并且清空缓存
+       * 并且将购车隐藏
+      */
+     wx.showModal({
+       title: '提交订单?',
+       showCancel: true,
+       cancelText: '取消',
+       cancelColor: '#000000',
+       confirmText: '确定',
+       confirmColor: '#3CC51F',
+       success: (result) => {
+         if(result.confirm){
+          this.setData({
+            cartList:[],
+            ["cartObj.totalPrice"]:null,
+            ["cartObj.totalQuantity"]:null,
+            cartDetailShow:false
+          })
+          
+          // console.log(this.data.cartDetailShow);
+          wx.setStorageSync('cartArr', []);
+         }
+       },
+     });
+      // this.setData({
+      //   cartList:[],
+      //   ["cartObj.totalPrice"]:null,
+      //   ["cartObj.totalQuantity"]:null,
+      //   cartDetailShow:false
+      // })
+      
+      // // console.log(this.data.cartDetailShow);
+      // wx.setStorageSync('cartArr', []);
     })
   },
+
+  //清空购物车
+  resetCartList(){
+    wx.showModal({
+      title: '清空购物车?',
+      content: '',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if(result.confirm){
+          this.setData({
+            cartList:[],
+            ["cartObj.totalPrice"]:null,
+            ["cartObj.totalQuantity"]:null,
+            cartDetailShow:false
+          })
+          //隐藏购物车
+          wx.setStorageSync('cartArr', []);
+        }
+      },
+    });
+  },
+  //控制菜单的显示与隐藏
+  showCartDetail(){
+    // console.log("显示与隐藏遮罩");
+    let flag = !this.data.cartDetailShow
+    this.setData({
+      cartDetailShow:flag
+    })
+  },
+
 
   onLoad: function (options) {
     //获取菜单数据
@@ -207,6 +276,9 @@ Page({
 
     //将json上的数据拷贝到云数据库中
     // this.getMenuDataToWxdb()
+
+    //初始化购物车商品细节
+    this.initCartDetail()
   },
 
 

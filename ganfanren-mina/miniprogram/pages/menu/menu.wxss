@@ -1,5 +1,6 @@
 .menuContainer {
   width: 100%;
+  position: relative;
 }
 swiper {
   width: 750rpx;
@@ -88,9 +89,13 @@ scroll-view {
 }
 .cart {
   width: 100%;
+  background: #fff;
+}
+.cart .submit {
+  width: 100%;
+  background: #fff;
   position: fixed;
   bottom: 0;
-  background: #fff;
 }
 .cart .submit .no_settlement {
   display: flex;
@@ -142,4 +147,70 @@ scroll-view {
   border-radius: 50rpx;
   position: absolute;
   right: 0;
+}
+.cartDetail {
+  position: fixed;
+  min-height: 60rpx;
+  max-height: 600rpx;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 600;
+  bottom: 100rpx;
+  width: 100vw;
+  background: #fff;
+}
+.cartDetail .cartDetailHeader {
+  width: 100%;
+  position: sticky;
+  z-index: 800;
+  top: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+}
+.cartDetail .cartDetailHeader button {
+  width: 100rpx;
+  margin: 0;
+  padding: 0;
+  height: 48rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #8a8a8a;
+  background: #fff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cartDetail .cartDetailHeader button image {
+  width: 32rpx;
+  height: 32rpx;
+}
+.cartDetail .cartDetailMain {
+  width: 100%;
+}
+.cartDetailHidden {
+  height: 0;
+  overflow: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+.cartDetailMask {
+  position: fixed;
+  top: 0;
+  bottom: 100rpx;
+  left: 0;
+  right: 0;
+  background: #8a8a8a86;
+}
+.cartDetailMaskHidden {
+  display: none;
+  overflow: hidden;
 }

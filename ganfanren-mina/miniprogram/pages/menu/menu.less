@@ -1,6 +1,6 @@
 .menuContainer{
   width: 100%;
-  // position: relative;
+  position: relative;
 }
 
 swiper {
@@ -98,10 +98,12 @@ scroll-view{
 //底部购物车结算页面
 .cart{
   width: 100%;
-  position: fixed;
-  bottom: 0;
   background: #fff;
   .submit{
+    width: 100%;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
     .no_settlement{
       display: flex;
       align-items: center;
@@ -155,4 +157,85 @@ scroll-view{
       }
     }
   }
+}
+
+
+
+.cartDetail{
+  position: fixed;
+  min-height: 60rpx;
+  max-height: 600rpx;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 600;
+  bottom: 100rpx;
+  width: 100vw;
+  background: #fff;
+  // transition: height 2s linear;
+  //菜单详情的头部
+  .cartDetailHeader{
+    width: 100%;
+    position: sticky;
+    z-index: 800;
+    top: 0;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 800;
+    
+    button{
+      width: 100rpx;
+      margin: 0;
+      padding: 0;
+      height:48rpx;
+      font-size: 24rpx;
+      text-align: center;
+      color: #8a8a8a;
+      background: #fff;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      image{
+        width: 32rpx;
+        height: 32rpx;
+      }
+      
+    }
+
+  }
+
+  //菜单详情
+  .cartDetailMain{
+    // background: black;
+    width: 100%;
+    // height: 1000rpx;
+    
+  }
+
+}
+.cartDetailHidden{
+  height: 0;
+  overflow: hidden;
+}
+//隐藏滚动条
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+
+//菜单详情的遮罩层
+.cartDetailMask{
+  position: fixed;
+  top: 0;bottom: 100rpx;
+  left: 0;right: 0;
+  background: #8a8a8a86;
+}
+.cartDetailMaskHidden{
+  display: none;
+  overflow: hidden;
 }

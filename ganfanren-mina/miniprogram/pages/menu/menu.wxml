@@ -38,42 +38,79 @@
 
     </view>
   </view>
- 
 
- 
-   
-   <!-- 底部结算购物车 -->
-   <view class="cart">
-    <!-- 结算 -->
-    <view class="submit">
-      <!-- 不能结算时的页面 -->
-      <view class="no_settlement" wx:if="{{!cartObj.totalQuantity}}">
-        <image class="" src="../../image/box_u.png" mode="widthFix" lazy-load="false"/>
-        <text class="">未选购任何商品</text>
-          
-      </view>
-
-      <!-- 能结算时的页面 -->
-      <view class="settlement" wx:else>
-        <!-- 图片加商品数量 -->
-        <view class="image_group" >
-          <image class="" src="../../image/box_s.png" mode="widthFix" lazy-load="false"/>
-          <!-- 显示商品数量 -->
-          <text class="red_bot">{{cartObj.totalQuantity}}</text>
+  <!-- 底部结算购物车 -->
+  <view class="cart" >
+      <!-- 结算 -->
+      <view class="submit">
+        <!-- 不能结算时的页面 -->
+        <view class="no_settlement" wx:if="{{!cartObj.totalQuantity}}">
+          <image class="" src="../../image/box_u.png" mode="widthFix" lazy-load="false"/>
+          <text class="">未选购任何商品</text>
         </view>
 
-        <!-- 计算商品价格 -->
-        <text class="price">￥{{cartObj.totalPrice}}</text>
-        <button type="primary" bindtap='submitOrder'>去结算</button>
-          
+        <!-- 能结算时的页面 -->
+        <view class="settlement" wx:else bindtap='showCartDetail'>
+          <!-- 图片加商品数量 -->
+          <view class="image_group" >
+            <image class="" src="../../image/box_s.png" mode="widthFix" lazy-load="false"/>
+            <!-- 显示商品数量 -->
+            <text class="red_bot">{{cartObj.totalQuantity}}</text>
+          </view>
+
+          <!-- 计算商品价格 -->
+          <text class="price">￥{{cartObj.totalPrice}}</text>
+          <button type="primary" catchtap='submitOrder'>去结算</button>
+            
+        </view>
+      </view>  <!--结算结束的位置-->
+
+
+      <!-- 菜单详情 默认不显示，用户点击后才显示 -->
+      <view class="{{cartDetailShow ? 'cartDetail' : 'cartDetailHidden' }} ">
+        <!-- 头部 包含清空按钮-->
+        <view class="cartDetailHeader">
+          <text>已选商品</text>
+          <button plain="{{true}}" bindtap='resetCartList'>
+            <image class="" src="../../image/garbage.png" mode="widthFix"  />
+            <text>清空</text>
+          </button>
+        </view>
+
+        <!-- 菜单详情 -->
+        <view class="cartDetailMain">
+          <!-- 菜单的每一项 -->
+          <view class="menu_list" wx:for="{{cartList}}" wx:key="*this">
+            <!-- 左侧图片 -->
+            <image  mode="widthFix"
+            src="http://m.qpic.cn/psc?/V50MDf9e3T15H42YFol43JjKfU1Xe4Iz/ruAMsa53pVQWN7FLK88i5nP4MFOFeDWb8aZU8MM*imo5.v7wiwnreO.YlDbSavi425xJbaHORsDYXGUsMVu8aAhHMZREXXoUlphtthRfUPg!/mnull&bo=ewIFAQAAAAABB10!&rf=photolist&t=5"></image>
+            <!-- 右侧主要内容区 -->
+
+            <view class="menu_right">
+              <view class="good_name">{{item.good_name}}</view>
+              <view class="good_info">原料:{{item.good_info}}</view>
+              <!-- 折扣率 -->
+              <view class="discount">{{item.discount}}折</view>
+              <view class="price">
+                <!-- 新价格 -->
+                <text class="new_price">￥{{item.good_newPrice}}</text>
+                <!-- 老价格 -->
+                <text class="old_price">￥{{item.good_oldPrice}}</text>
+                <!-- 加入购物车 -->
+                <button bindtap='addGoodToCart' data-item='{{item}}'>+</button>
+              </view>
+
+            </view>
+
+          </view>
+        </view>
+    
       </view>
+
+  </view>
+
+  <!-- cart遮罩层，与菜单详情同时出现，防止用户触摸穿透，如果用户点击这招层，则将菜单详情收起来 -->
+  <view class="{{cartDetailShow ? 'cartDetailMask' : 'cartDetailMaskHidden'}}" bindtap='showCartDetail'></view>
   
-    </view>
-    <!-- 菜单详情 默认不显示，用户点击后才显示 -->
-    <view class="cartDetail">
-
-    </view>
-
-   </view>
 </view>
 
