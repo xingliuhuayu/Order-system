@@ -50,7 +50,7 @@ export default new Router({
       components:{
         //默认路由
         default:Home,
-        //命名路由
+        //命名视图
         "orderingGuide":OrderingGuide,
         "delivery":Delivery,
         "history":History

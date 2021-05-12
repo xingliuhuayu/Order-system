@@ -68,7 +68,7 @@ export default {
         return {
             // name:"Barke",
             // menuList:[]
-            status:1,
+            status:2,
         }
     },
     // beforeRouteEnter (to, from, next) {

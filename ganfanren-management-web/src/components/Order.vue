@@ -2,14 +2,15 @@
     <div class="order row">
         <!-- 订单 -->
         <div class="col-sm-12 col-md-6">
-            <!-- <Alert :message="alert" v-if="alert"></Alert> -->
+            <Alert :message="alert" v-if="alert"></Alert>
             <table class="table">
                 <thead class="thead-default">
                     <tr>
                         <th>订单号</th>
                         <th>时间</th>
-                        <th>订单状态</th>
-                        <th>订单详情</th>
+                        <th>状态</th>
+                        <th>详情</th>
+                        <th>删除</th>
                     </tr>
                 </thead>
                
@@ -32,10 +33,14 @@
                             <span>{{item.time}}</span>
                         </td>
                         <td>
-                            <button class="btn btn-outline-success btn-sm">已完成</button>
+                            <button class="btn btn-outline-warning btn-sm" v-if='!item.order_status' @click="changeOrderStatus(item,false)">未完成</button>
+                            <button class="btn btn-outline-success btn-sm" v-if='item.order_status' @click="changeOrderStatus(item,true)">已完成</button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-primary btn-sm" @click="orderDetail(item)">订单详情</button>
+                            <button class="btn btn-outline-primary btn-sm" @click="orderDetail(item)">详情</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-danger btn-sm" @click="removeOrderItem(item)">删除</button>
                         </td>
                     </tr>
                 </tbody>
@@ -85,7 +90,8 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            orderObj:{}
+            orderObj:{},
+            alert:null
         }
     },
     methods:{
@@ -97,6 +103,8 @@ export default {
                 //深拷贝，并且反转数组
                 let rsOrderItem= [...res.data].reverse()
                 this.orderObj=rsOrderItem[0]
+                // console.log(this.orderObj);
+                
                 // console.log('修改后的数组',rsArr);                
                 this.$store.commit("setOrderItem",rsOrderItem)
             })
@@ -105,6 +113,41 @@ export default {
             console.log(item);
             this.orderObj=item
         },
+
+        // 修改订单的状态（是否完成订单?）
+        changeOrderStatus(item,status){
+
+            //item代表当前菜单，status代表订单的状态
+            let formData = Object.assign(item,{})
+            let {id} = formData
+            formData.order_status=!status
+            axios
+            .patch(`/orders/${id}`,formData)
+            // .then(res=>{
+            //     this.alert="更新订单状态成功"
+            // })
+            // .catch(err=>{
+            //     this.alert="更新订单状态失败"
+            // })
+        },
+        //删除订单
+        removeOrderItem(item){
+            let {id} = item
+            if(confirm(`
+                真的要删除${id}号订单嘛?
+                无法恢复呦~~
+            `)){
+                axios
+                .delete(`/orders/${id}`)
+                .then(res=>{
+                    // this.alert="删除订单成功"
+                    this.getOrderItemToVuex()
+                })
+                // .catch(err=>{
+                //     this.alert="删除订单失败"
+                // })
+            }
+        }
         
     },
     computed:{

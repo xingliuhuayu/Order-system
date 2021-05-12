@@ -71,7 +71,7 @@ export default {
                     .then(res=>{
                         //    console.log(res);
                         this.$store.dispatch("setUser",that.email)
-                        this.$router.push({name:"Home"})
+                        this.$router.push({name:"Menu"})
                     })
                 }
                 

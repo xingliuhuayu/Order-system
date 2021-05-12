@@ -124,30 +124,6 @@
   ],
   "orders": [
     {
-      "id": 1,
-      "name": "Apple",
-      "description": "Apple is good!"
-    },
-    {
-      "tiem": "2020-4-26",
-      "total_price": 20,
-      "order_detail": [
-        {
-          "good_name": "茄子豆角",
-          "quantity": 1
-        },
-        {
-          "good_name": "紫菜蛋汤",
-          "quantity": 2
-        },
-        {
-          "good_name": "海带排骨汤",
-          "quantity": 3
-        }
-      ],
-      "id": 2
-    },
-    {
       "time": "2021-04-26T08:31:03.636Z",
       "total_price": 33.5,
       "order_detail": [
@@ -216,7 +192,8 @@
           "quantity": 2
         }
       ],
-      "id": 5
+      "id": 5,
+      "order_status": true
     },
     {
       "time": "2021/4/26下午7:03:17",

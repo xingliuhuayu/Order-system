@@ -25,9 +25,9 @@
       },
       {
         "pagePath": "pages/order/order",
-        "text": "购物车",
-        "iconPath": "./image/tabBarImg/cart.png",
-        "selectedIconPath": "./image/tabBarImg/cart_s.png"
+        "text": "订单",
+        "iconPath": "./image/tabBarImg/order.png",
+        "selectedIconPath": "./image/tabBarImg/order_s.png"
       }
     ]
   },
