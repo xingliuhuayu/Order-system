@@ -30,10 +30,12 @@ Page({
     ],
     //菜单的数据
     menuList: [],
+    //控制购物车的显示和隐藏
     cartDetailShow: false,
     //购物车
     cartItem: {},
     cartList: [],
+    //存储当前订单的数量与价格
     cartObj: {
       totalPrice: null,
       totalQuantity: null
@@ -246,7 +248,7 @@ Page({
       success: (result) => {
         if (result.confirm) {
           let cartArr = wx.getStorageSync("cartArr");
-          let time = new Date().toLocaleDateString
+          let time = new Date().toLocaleDateString()
           const db = wx.cloud.database()
           const _ = db.command
           // console.log(_.inc);
@@ -257,7 +259,9 @@ Page({
                 time: time,
                 total_price: this.data.cartObj.totalPrice,
                 order_status: false,
-                order_detail: cartArr
+                order_detail: cartArr,
+                allGoodsQuantity:this.data.cartObj.totalQuantity,
+                allGoodsPrice:this.data.cartObj.totalPrice
               }
           })
           .then(res => {

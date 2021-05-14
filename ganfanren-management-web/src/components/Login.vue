@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-</template>、
+</template>
 
 <script>
 // import Alert from "./Alert"

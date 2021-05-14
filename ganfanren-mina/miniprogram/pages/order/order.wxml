@@ -1,1 +1,32 @@
 <SearchInput></SearchInput>
+<view class="orderbox">
+  <view class="orderItem" wx:for="{{orderArr}}" wx:key="_id" wx:for-item="order">
+    <view class="hidden">
+      <text>时间:</text>
+      <text>{{order.time}}</text>
+      <text>详情</text>
+      <text class="rotate"></text>
+    </view>
+    <view class="title">
+      <text>菜名</text>
+      <text>数量</text>
+      <text>单价</text>
+      <text>小计</text>
+    </view>
+    <view class="orderDetail" wx:for="{{order.order_detail}}" wx:key="_id" wx:for-item="detail">
+      <text class="">{{detail.good_name}}</text>
+      <text class="">{{detail.quantity}}</text>
+      <text>{{detail.good_newPrice}}</text>
+      <text class="">{{detail.totalItemPrice}}</text>
+    </view>
+    <view class="total">
+      <text class="">总计</text>
+      <text class="">{{order.allGoodsQuantity}}</text>
+      <text class=""></text>
+      <text class="">{{order.allGoodsPrice}}</text>
+    </view>
+    <button class="removeOrderItem" catchtap='removeOrderItem' data-orderInfo="{{order}}" style="width:100%;background-color: red;color: #fff;padding: 10rpx;margin: 16rpx 0 30rpx 0;text-align: center;">
+      删除订单
+    </button>
+  </view>
+</view>
