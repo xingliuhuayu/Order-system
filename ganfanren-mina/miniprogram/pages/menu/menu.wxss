@@ -192,6 +192,50 @@ scroll-view {
 .cartDetail .cartDetailMain {
   width: 100%;
 }
+.cartDetail .cartDetailMain .detail_list {
+  display: flex;
+  margin: 16rpx 16rpx;
+}
+.cartDetail .cartDetailMain .detail_list image {
+  width: 320rpx;
+}
+.cartDetail .cartDetailMain .detail_list .detail_right {
+  padding-left: 16rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cartDetail .cartDetailMain .detail_list .detail_right .detail_good_name {
+  font-weight: 600;
+}
+.cartDetail .cartDetailMain .detail_list .detail_right .detail_goodInfo {
+  width: 410rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.cartDetail .cartDetailMain .detail_list .detail_right .detail_goodInfo .price .new_price {
+  color: red;
+}
+.cartDetail .cartDetailMain .detail_list .detail_right .detail_goodInfo .price .old_price {
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: darkgrey;
+  text-decoration: line-through;
+}
+.cartDetail .cartDetailMain .detail_list .detail_right .detail_goodInfo .quantity {
+  display: flex;
+}
+.cartDetail .cartDetailMain .detail_list .detail_right .detail_goodInfo .quantity text {
+  padding: 0 20rpx;
+}
+.cartDetail .cartDetailMain .detail_list .detail_right .detail_goodInfo .quantity button {
+  padding: 0;
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(88, 6, 240, 0.685);
+}
 .cartDetailHidden {
   height: 0;
   overflow: hidden;
